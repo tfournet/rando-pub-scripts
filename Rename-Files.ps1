@@ -9,10 +9,8 @@ New-Item -ItemType Directory $DestinationFolder -ErrorAction SilentlyContinue
 $wavFiles = (Get-Item $SourceFolder\*\*.wav)
 
 ForEach ( $wavFile in $wavFiles ) {
-  $ItemNumber = $wavFile.Name
-  $ItemNumber.Name
-  $newName = $wavFile.Name -Replace "ZOOM",$newPrefix -Replace "_TR1",""
   $fileName = $wavFile.Name
+  $newName = $fileName -Replace "ZOOM",$newPrefix -Replace "_TR1",""
   Write-Host "Renaming $fileName to $newName"
   Move-Item $wavFile $DestinationFolder\$newName 
 }
